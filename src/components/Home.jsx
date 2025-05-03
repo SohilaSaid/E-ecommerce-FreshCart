@@ -124,7 +124,7 @@ export default function Home() {
         />
         
         <div className='flex flex-wrap mt-5'>
-          {filteredProducts?.((product) => {
+          {filteredProducts?.map((product) => {
             let { id, title, price, imageCover, category, ratingsAverage } = product
             let { name } = category
 
