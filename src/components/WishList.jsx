@@ -55,9 +55,9 @@ export default function WishList() {
     </div>
   }
 
-  // if (isError) {
-  //   return <h2>{error?.response?.data?.message}</h2>
-  // }
+  if (isError) {
+    return <h2>{error?.response?.data?.message}</h2>
+  }
   return (
     <>
       <Toaster />
@@ -87,7 +87,7 @@ export default function WishList() {
                     <div className='w-9/12'>
                       <h2 className='font-bold'>{product.title} </h2>
                       <h2 className='font-bold text-main'>{product.price}</h2>
-                      <button onClick={() => { deleteitemWishlist(product._id) }} className=' my-2 p-2  text-red-600'><i class="fa-solid fa-trash-can"></i> Remove</button>
+                      <button onClick={() => { deleteitemWishlist(product._id) }} className=' my-2 p-2  text-red-600'><i className="fa-solid fa-trash-can"></i> Remove</button>
                     </div>
                   </div>
 
