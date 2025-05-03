@@ -30,7 +30,7 @@ export default function App() {
       path: '',
       element: <LayOut />,
       children: [
-        { path: "", element: <ProductRouting><Home /></ProductRouting> },
+        { path: "", element: <Home /> },
         { path: "wishlist", element: <ProductRouting><WishList /></ProductRouting> },
         { path: "products", element: <ProductRouting><Products /></ProductRouting> },
         { path: "categories", element: <ProductRouting><Catrgories /></ProductRouting> },

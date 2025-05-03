@@ -14,6 +14,7 @@ export default function Home() {
 
   let [numsList, setNumsList] = useState("1")
   let [favorite , setFavorite] = useState(false)
+  let [searchQuery, setSearchQuery] = useState("")
 
   let{addToCart , setCartNum } = useContext(cartContext)
   let {addtoWishlist} = useContext(wishListContext)
@@ -67,8 +68,14 @@ export default function Home() {
   }
 
 
+  function handleSearchChange(e) {
+    setSearchQuery(e.target.value);  
+    
+  }
 
-
+  const filteredData = data?.data?.data.filter((product) => {
+    return product.title.toLowerCase().includes(searchQuery.toLowerCase())  
+  })
 
 
 
@@ -89,10 +96,16 @@ export default function Home() {
       <HomeSlider/>
       <CategorySlider/>
 
-      <input type="search" onClick={()=>{search(e)}}  class="lg:w-2/3 sm:w-full mx-auto block p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-main focus:border-main " placeholder="Search"  />
+      <input 
+          type="search" 
+          value={searchQuery}  
+          onChange={handleSearchChange}  
+          className="lg:w-2/3 sm:w-full mx-auto block p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-main focus:border-main" 
+          placeholder="Search" 
+        />
         
         <div className='flex flex-wrap mt-5'>
-          {data?.data?.data?.map((product) => {
+          {filteredData?.map((product) => {
             let { id, title, price, imageCover, category, ratingsAverage } = product
             let { name } = category
 

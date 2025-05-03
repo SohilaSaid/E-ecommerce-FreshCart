@@ -24,7 +24,6 @@ export default function AllOrders() {
             
     }, []);
 
-  
   return (
     <>
     <h2 className='mt-28 text-center text-main font-bold text-2xl '>AllOrders</h2>
