@@ -13,7 +13,7 @@ export default function Home() {
 
 
   let [numsList, setNumsList] = useState("1")
-  let [favorite , setFavorite] = useState(false)
+  let [favoriteList, setFavoriteList] = useState([])
   let [searchQuery, setSearchQuery] = useState("")
 
   let{addToCart , setCartNum } = useContext(cartContext)
@@ -68,6 +68,24 @@ export default function Home() {
   }
 
 
+   
+   function toggleFavorite(id) {
+    if (favoriteList.includes(id)) { 
+      setFavoriteList(favoriteList.filter(item => item !== id))
+    } else {
+      setFavoriteList([...favoriteList, id])
+    }
+
+    addtoWishlist(id).then((res) => {
+      refetch()
+      toast.success(res.data.message)
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message)
+    })
+  }
+
+
   function handleSearchChange(e) {
     setSearchQuery(e.target.value);  
     
@@ -76,6 +94,10 @@ export default function Home() {
   const filteredData = data?.data?.data.filter((product) => {
     return product.title.toLowerCase().includes(searchQuery.toLowerCase())  
   })
+
+  const filteredProducts = data?.data?.data?.filter(product => 
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
 
 
@@ -125,8 +147,10 @@ export default function Home() {
                       </span>
                     </div>
                     </Link>
-                    <button onClick={()=>{addWishList(id)}}><i className={`fa-solid fa-heart   ${ favorite ? "text-red-500" : "text-gray-500"}`} ></i></button>
-                    <button onClick={()=>{add(id)}} className='bg-main text-white text-center  mt-3 p-1 translate-y-10 duration-500 w-full rounded hover:bg-green-600 group-hover:translate-y-0'>Add to card</button>
+                      <button onClick={() => { toggleFavorite(id) }}>
+                        <i className={`fa-solid fa-heart ${favoriteList.includes(id) ? "text-red-500" : "text-gray-500"}`} ></i>
+                      </button>
+                      <button onClick={()=>{add(id)}} className='bg-main text-white text-center  mt-3 p-1 translate-y-10 duration-500 w-full rounded hover:bg-green-600 group-hover:translate-y-0'>Add to card</button>
                   </div>
                 
               </div>
