@@ -91,11 +91,8 @@ export default function Home() {
     
   }
 
-  const filteredData = data?.data?.data.filter((product) => {
-    return product.title.toLowerCase().includes(searchQuery.toLowerCase())  
-  })
-
-  const filteredProducts = data?.data?.data?.filter(product => 
+ 
+  const filteredProducts = data?.data?.data?.filter(product =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
@@ -127,7 +124,7 @@ export default function Home() {
         />
         
         <div className='flex flex-wrap mt-5'>
-          {filteredData?.map((product) => {
+          {filteredProducts?.((product) => {
             let { id, title, price, imageCover, category, ratingsAverage } = product
             let { name } = category
 

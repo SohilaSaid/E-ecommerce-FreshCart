@@ -80,6 +80,10 @@ export default function Products() {
     setSearchQuery(e.target.value)
   }
 
+  const filteredProducts = data?.data?.data?.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
 
   if (isError) {
     return <h2 className='text-red-600'>{error.response.data.massage}</h2>
