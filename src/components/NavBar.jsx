@@ -32,7 +32,7 @@ export default function NavBar() {
 
 
 
-                    {token ? <div className="hidden w-full md:block md:w-auto mx-10" id="navbar-default">
+                    <div className="hidden w-full md:block md:w-auto mx-10" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4  md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0">
                             <li>
                                 <NavLink to="" className="block py-2 px-3 text-gray-700  rounded md:bg-transparent md:p-0" aria-current="page">Home</NavLink>
@@ -57,7 +57,7 @@ export default function NavBar() {
                             </li>
 
                         </ul>
-                    </div> : ""}
+                    </div> 
 
 
 
